@@ -1,0 +1,33 @@
+name: Validate Apeiro README
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  check-readme:
+    name: Lint and Confirm Readme Integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify Codex Section Formatting
+        run: |
+          if ! grep -q "<!-- codex:start -->" README.md; then echo "Missing codex:start marker" && exit 1; fi
+          if ! grep -q "<!-- codex:end -->" README.md; then echo "Missing codex:end marker" && exit 1; fi
+          echo "Codex section markers present."
+
+      - name: Check for Required Sections
+        run: |
+          for section in "Project Goals" "Dependencies" "Installation" "Compliance"; do
+            if ! grep -q "$section" README.md; then
+              echo "Missing required section: $section"
+              exit 1
+            fi
+          done
+          echo "All required sections present."
+
+      - name: Report Success
+        run: echo "README.md passed all checks."
