@@ -43,8 +43,8 @@ To begin developing from this repository using Codex, GitHub Copilot, or any oth
 2. **Scaffold the folder layout** based on Section 2:
    - One folder per module (e.g., `ApeiroGridSelf`, `ApeiroEffects`, etc.)
    - All names must begin with `Apeiro`
-3. **Create stub **``** files** inside each folder, named identically (e.g., `ApeiroEffects.lua` in `ApeiroEffects/`).
-4. **Implement **`` first, as it contains shared systems like SavedVariables, module loading, and combat state hooks (see Section 2.1).
+3. Create stub .lua files inside each folder — for example, ApeiroEffects.lua in the ApeiroEffects/ folder.
+4. Implement the file ApeiroCore.lua first. It contains shared systems like SavedVariables, module loading, and combat state hooks (see Section 2.1).
 5. **Avoid guessing.** If a section is unclear, defer to the README prompt context (below).
 
 This instruction block is machine-readable and bounded by `<!-- codex:start -->` and `<!-- codex:end -->`.
